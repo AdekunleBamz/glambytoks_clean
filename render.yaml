@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: glambytoks-booking
+    env: node
+    buildCommand: cd client && npm install && npm run build
+    startCommand: cd client && npm run serve
+    envVars:
+      - key: NODE_VERSION
+        value: 18.0.0
+    staticPublishPath: ./client/build 
