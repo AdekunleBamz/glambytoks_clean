@@ -10,7 +10,6 @@ import {
   ImageList,
   ImageListItem,
 } from '@mui/material';
-import { LocationOn, Home, Celebration, Church } from '@mui/icons-material';
 
 const PageSection = styled(Box)`
   padding: 6rem 0;
@@ -79,7 +78,7 @@ const ServicesPage = () => {
     {
       id: 3,
       title: 'Birthday Shoot',
-      price: '₦50,000',
+      price: '₦30,000',
       description: 'Perfect makeup for your special birthday celebration.',
       features: [
         'Full face makeup',
@@ -122,6 +121,21 @@ const ServicesPage = () => {
         'Traditional look',
         'Long-lasting wear',
         'Touch-up kit'
+      ]
+    },
+    {
+      id: 7,
+      title: 'Complete Bridal Package',
+      price: '₦150,000',
+      description: 'Our most comprehensive bridal package for your special day.',
+      features: [
+        'Full bridal makeup',
+        'Trial session included',
+        'Long-lasting wear',
+        'Touch-up kit',
+        'Bridal party makeup (up to 3 people)',
+        'Pre-wedding consultation',
+        'Premium products used'
       ]
     }
   ];

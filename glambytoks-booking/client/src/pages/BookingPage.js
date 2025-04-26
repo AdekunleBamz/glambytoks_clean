@@ -21,10 +21,11 @@ import './BookingPage.css';
 const services = [
   { id: 1, name: 'Studio Glam', price: 15000 },
   { id: 2, name: 'Home Service', price: 30000 },
-  { id: 3, name: 'Birthday Shoot', price: 50000 },
+  { id: 3, name: 'Birthday Shoot', price: 30000 },
   { id: 4, name: 'White Wedding', price: 60000 },
   { id: 5, name: 'Court Wedding', price: 40000 },
-  { id: 6, name: 'Engagement and Introduction', price: 40000 }
+  { id: 6, name: 'Engagement and Introduction', price: 40000 },
+  { id: 7, name: 'Complete Bridal Package', price: 150000 }
 ];
 
 const BookingPage = () => {

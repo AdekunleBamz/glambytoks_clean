@@ -10,7 +10,6 @@ import {
   ImageList,
   ImageListItem,
 } from '@mui/material';
-import { LocationOn, Home, Celebration, Church } from '@mui/icons-material';
 
 const PageSection = styled(Box)`
   padding: 6rem 0;
