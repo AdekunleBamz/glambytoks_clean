@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
   Typography,
@@ -41,13 +41,7 @@ const BookingPage = () => {
     service: ''
   });
 
-  useEffect(() => {
-    if (selectedDate) {
-      fetchAvailableSlots();
-    }
-  }, [selectedDate]);
-
-  const fetchAvailableSlots = async () => {
+  const fetchAvailableSlots = useCallback(async () => {
     try {
       setLoading(true);
       setError('');
@@ -59,7 +53,13 @@ const BookingPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedDate]);
+
+  useEffect(() => {
+    if (selectedDate) {
+      fetchAvailableSlots();
+    }
+  }, [selectedDate, fetchAvailableSlots]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -119,7 +119,7 @@ const BookingPage = () => {
       `Preferred Date: ${selectedDate ? format(selectedDate, 'MMMM d, yyyy') : 'Not selected'}\n` +
       `Preferred Time: ${selectedSlot ? format(selectedSlot.start, 'h:mm a') : 'Not selected'}`
     );
-    window.open(`https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}?text=${message}`, '_blank');
+    window.open(`https://wa.me/2347010171606?text=${message}`, '_blank');
   };
 
   return (
