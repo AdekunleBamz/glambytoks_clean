@@ -1,10 +1,24 @@
 services:
   - type: web
     name: glambytoks-booking
-    env: node
-    buildCommand: cd client && npm install && npm run build
-    startCommand: cd client && npm run serve
+    runtime: node
+    buildCommand: |
+      cd client && npm install && npm run build
+      cd ../server && npm install
+    startCommand: cd server && npm start
     envVars:
       - key: NODE_VERSION
         value: 18.0.0
+      - key: GOOGLE_CLIENT_EMAIL
+        sync: false
+      - key: GOOGLE_PRIVATE_KEY
+        sync: false
+      - key: CALENDAR_ID
+        sync: false
+      - key: EMAIL
+        sync: false
+      - key: REACT_APP_WHATSAPP_NUMBER
+        value: "2347010171606"
+      - key: REACT_APP_API_URL
+        value: "https://glambytoks-booking.onrender.com"
     staticPublishPath: ./client/build 

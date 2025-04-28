@@ -1,7 +1,7 @@
 const config = {
   contact: {
     phone: process.env.REACT_APP_PHONE_NUMBER,
-    whatsapp: process.env.REACT_APP_WHATSAPP_NUMBER,
+    whatsapp: '2347010171606',
     email: process.env.REACT_APP_EMAIL
   },
   social: {

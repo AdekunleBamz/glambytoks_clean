@@ -29,7 +29,7 @@ const Contact = () => {
               <p>Lagos, Nigeria</p>
             </div>
             <div className="contact-info">
-              <p><FaPhone /> +234 812 345 6789</p>
+              <p><FaPhone /> +234 701 017 1606</p>
               <p><FaEnvelope /> info@glambytoks.com</p>
               <p><FaClock /> Mon - Sat: 9:00 AM - 7:00 PM</p>
             </div>
@@ -80,7 +80,7 @@ const Contact = () => {
           </p>
           <div className="cta-buttons">
             <a href="/booking" className="cta-button">Book Now</a>
-            <a href="tel:+2348123456789" className="cta-button secondary">Call Us</a>
+            <a href="tel:+2347010171606" className="cta-button secondary">Call Us</a>
           </div>
         </section>
       </div>

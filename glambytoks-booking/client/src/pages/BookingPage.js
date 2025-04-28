@@ -16,6 +16,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { format } from 'date-fns';
 import { checkAvailability, createBooking } from '../services/calendarService';
 import { WhatsApp } from '@mui/icons-material';
+import config from '../config';
 import './BookingPage.css';
 
 const services = [
@@ -120,7 +121,7 @@ const BookingPage = () => {
       `Preferred Date: ${selectedDate ? format(selectedDate, 'MMMM d, yyyy') : 'Not selected'}\n` +
       `Preferred Time: ${selectedSlot ? format(selectedSlot.start, 'h:mm a') : 'Not selected'}`
     );
-    window.open(`https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}?text=${message}`, '_blank');
+    window.open(`https://wa.me/2347010171606?text=${message}`, '_blank');
   };
 
   return (
