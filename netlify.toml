@@ -1,0 +1,13 @@
+[build]
+  base = "glambytoks-booking"
+  command = "cd client && npm install && CI=false npm run build"
+  publish = "client/build"
+
+[build.environment]
+  NODE_VERSION = "18.0.0"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 

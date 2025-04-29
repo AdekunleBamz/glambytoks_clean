@@ -8,7 +8,9 @@ import {
   Grid,
   CircularProgress,
   Alert,
-  MenuItem
+  MenuItem,
+  useTheme,
+  useMediaQuery
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -30,6 +32,8 @@ const services = [
 ];
 
 const BookingPage = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [selectedDate, setSelectedDate] = useState(null);
   const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
@@ -129,7 +133,7 @@ const BookingPage = () => {
       style={{
         minHeight: '100vh',
         width: '100%',
-        padding: '2rem',
+        padding: isMobile ? '1rem' : '2rem',
         background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${process.env.PUBLIC_URL}/images/booking-bg.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -142,8 +146,23 @@ const BookingPage = () => {
       }}
     >
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Container maxWidth="md" sx={{ py: 4, position: 'relative', zIndex: 1 }}>
-          <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ color: 'white' }}>
+        <Container maxWidth="md" sx={{ 
+          py: isMobile ? 2 : 4, 
+          position: 'relative', 
+          zIndex: 1,
+          px: isMobile ? 1 : 2
+        }}>
+          <Typography 
+            variant={isMobile ? "h5" : "h4"} 
+            component="h1" 
+            gutterBottom 
+            align="center" 
+            sx={{ 
+              color: 'white',
+              fontSize: isMobile ? '1.5rem' : '2rem',
+              fontWeight: 'bold'
+            }}
+          >
             Book Your Makeup Session
           </Typography>
 
@@ -154,14 +173,14 @@ const BookingPage = () => {
             component="form" 
             onSubmit={handleSubmit} 
             sx={{ 
-              mt: 3,
+              mt: isMobile ? 2 : 3,
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
-              padding: 3,
+              padding: isMobile ? 2 : 3,
               borderRadius: 2,
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
             }}
           >
-            <Grid container spacing={3}>
+            <Grid container spacing={isMobile ? 2 : 3}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
@@ -170,6 +189,7 @@ const BookingPage = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
+                  size={isMobile ? "small" : "medium"}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -181,6 +201,7 @@ const BookingPage = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleInputChange}
+                  size={isMobile ? "small" : "medium"}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -191,6 +212,7 @@ const BookingPage = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
+                  size={isMobile ? "small" : "medium"}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -202,6 +224,7 @@ const BookingPage = () => {
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
+                  size={isMobile ? "small" : "medium"}
                 >
                   {services.map((service) => (
                     <MenuItem key={service.id} value={service.name}>
@@ -216,7 +239,13 @@ const BookingPage = () => {
                   value={selectedDate}
                   onChange={handleDateChange}
                   disablePast
-                  renderInput={(params) => <TextField {...params} fullWidth />}
+                  renderInput={(params) => (
+                    <TextField 
+                      {...params} 
+                      fullWidth 
+                      size={isMobile ? "small" : "medium"}
+                    />
+                  )}
                 />
               </Grid>
 
@@ -227,16 +256,21 @@ const BookingPage = () => {
               ) : (
                 selectedDate && (
                   <Grid item xs={12}>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography 
+                      variant={isMobile ? "subtitle1" : "h6"} 
+                      gutterBottom
+                      sx={{ fontWeight: 'bold' }}
+                    >
                       Available Time Slots
                     </Typography>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={isMobile ? 1 : 2}>
                       {availableSlots.map((slot) => (
-                        <Grid item xs={12} sm={6} md={4} key={slot.start}>
+                        <Grid item xs={6} sm={4} md={3} key={slot.start}>
                           <Button
                             variant={selectedSlot?.start === slot.start ? 'contained' : 'outlined'}
                             fullWidth
                             onClick={() => handleSlotSelect(slot)}
+                            size={isMobile ? "small" : "medium"}
                           >
                             {format(slot.start, 'h:mm a')}
                           </Button>
@@ -253,8 +287,12 @@ const BookingPage = () => {
                   variant="contained"
                   color="primary"
                   fullWidth
-                  size="large"
+                  size={isMobile ? "large" : "large"}
                   disabled={loading || !selectedSlot}
+                  sx={{ 
+                    py: isMobile ? 1 : 1.5,
+                    fontSize: isMobile ? '0.9rem' : '1rem'
+                  }}
                 >
                   {loading ? 'Booking...' : 'Book Now'}
                 </Button>
@@ -267,6 +305,11 @@ const BookingPage = () => {
                   fullWidth
                   startIcon={<WhatsApp />}
                   onClick={handleWhatsAppBooking}
+                  size={isMobile ? "large" : "large"}
+                  sx={{ 
+                    py: isMobile ? 1 : 1.5,
+                    fontSize: isMobile ? '0.9rem' : '1rem'
+                  }}
                 >
                   Book via WhatsApp
                 </Button>

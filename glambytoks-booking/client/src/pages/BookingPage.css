@@ -1,1 +1,73 @@
- 
+/* Mobile-specific styles */
+@media (max-width: 600px) {
+  .MuiContainer-root {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .MuiTextField-root {
+    margin-bottom: 8px;
+  }
+
+  .MuiButton-root {
+    margin-top: 8px;
+  }
+
+  .MuiGrid-item {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  /* Improve touch targets */
+  .MuiButton-root {
+    min-height: 44px;
+  }
+
+  .MuiMenuItem-root {
+    min-height: 44px;
+  }
+
+  /* Improve form field spacing */
+  .MuiFormControl-root {
+    margin-bottom: 16px;
+  }
+
+  /* Improve date picker on mobile */
+  .MuiInputBase-root {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+}
+
+/* Improve button contrast and touch targets */
+.MuiButton-root {
+  text-transform: none;
+  font-weight: 600;
+}
+
+/* Improve form field readability */
+.MuiInputLabel-root {
+  font-weight: 500;
+}
+
+/* Improve alert visibility */
+.MuiAlert-root {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* Improve time slot buttons */
+.time-slot-button {
+  margin: 4px;
+  min-width: 80px;
+}
+
+/* Improve service selection */
+.MuiSelect-select {
+  padding: 12px 14px;
+}
+
+/* Improve overall spacing */
+.MuiContainer-root {
+  max-width: 100% !important;
+  padding: 16px !important;
+} 
