@@ -21,9 +21,14 @@
     "styled-components": "^6.1.8",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "tsconfig-paths": "^4.2.0"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

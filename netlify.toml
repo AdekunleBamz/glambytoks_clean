@@ -1,11 +1,12 @@
 [build]
   base = "glambytoks-booking"
-  command = "cd client && npm install && CI=false npm run build"
+  command = "cd client && npm install --legacy-peer-deps && DISABLE_ESLINT_PLUGIN=true npm run build"
   publish = "client/build"
 
 [build.environment]
   NODE_VERSION = "18.0.0"
   NPM_FLAGS = "--legacy-peer-deps"
+  DISABLE_ESLINT_PLUGIN = "true"
 
 [[redirects]]
   from = "/*"
