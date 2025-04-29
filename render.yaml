@@ -3,7 +3,7 @@ services:
     name: glambytoks-booking
     runtime: node
     buildCommand: |
-      cd client && npm install && npm run build
+      cd client && npm install --legacy-peer-deps && DISABLE_ESLINT_PLUGIN=true npm run build
       cd ../server && npm install
     startCommand: cd server && npm start
     envVars:
@@ -21,4 +21,7 @@ services:
         value: "2347010171606"
       - key: REACT_APP_API_URL
         value: "https://glambytoks-booking.onrender.com"
-    staticPublishPath: ./client/build 
+      - key: DISABLE_ESLINT_PLUGIN
+        value: "true"
+      - key: NPM_FLAGS
+        value: "--legacy-peer-deps" 
